@@ -26,7 +26,7 @@ public class ShardingJdbcTest {
         for (int i = 1; i < 10; i++) {
             StudentEntity student = new StudentEntity();
 
-            student.setId(i);
+            student.setUserId(i);
             student.setName("Andrew_" + i);
             student.setAge(i);
             student.setSex(false);

@@ -5,7 +5,7 @@ spring:
   profiles:
     active: test
   application:
-    name: shardingjdbc-example
+    name: shardingjdbc-example2
   #shardingjdbc主要配置 使用druid连接池
   shardingsphere:
     # 是否启用sharding
@@ -23,13 +23,22 @@ spring:
       sql-show: true
     sharding:
       tables:
-        student: # 分表，逻辑表名
+        # 分表，逻辑表名
+        student:
+          # 雪花算法生成ID，配置workId
+          key-generator:
+            type: SNOWFLAKE
+            column: id
+            props:
+              worker:
+                id: 1
           # 指定product_order表的数据分布情况，配置数据节点,行表达式标识符使用 ${...} 或 $->{...}，但前者与 Spring 本身的文件占位符冲突，所以在 Spring 环境中建议使用 $->{...}
           actual-data-nodes: master.student,master.student_$->{0..1}
           table-strategy: # 配置分表策略
             inline:
-              sharding-column: id # 分片列名称
-              algorithm-expression: student_$->{id % 2}
+              sharding-column: user_id # 分片列名称
+              algorithm-expression: student_$->{user_id % 2}
+
 
 mybatis-plus:
   mapper-locations: classpath:/mapper/*Mapper.xml

@@ -25,7 +25,7 @@ public class StudentEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.ASSIGN_ID)
     private Integer id;
 
     @TableField("name")
@@ -43,8 +43,8 @@ public class StudentEntity implements Serializable {
     @TableField("tel")
     private String tel;
 
-    @TableField("create_at")
-    private Date createAt;
+    @TableField("user_id")
+    private Integer userId;
 
 
 }

@@ -43,8 +43,8 @@ public class StudentEntity implements Serializable {
     @TableField("tel")
     private String tel;
 
-    @TableField("create_at")
-    private Date createAt;
+    @TableField("user_id")
+    private Integer userId;
 
 
 }
