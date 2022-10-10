@@ -1,13 +1,17 @@
 package com.xh.shardingjdbc.test;
 
-import com.xh.shardingjdbc.example.model.StudentEntity;
-import com.xh.shardingjdbc.example.service.StudentService;
+import cn.hutool.core.convert.Convert;
+import com.xh.shardingjdbc.example.model.ProductOrderEntity;
+import com.xh.shardingjdbc.example.service.ProductOrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * @author H.Yang
@@ -19,19 +23,20 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class ShardingJdbcTest {
 
     @Autowired
-    private StudentService studentService;
+    private ProductOrderService productOrderService;
 
     @Test
     public void shardingDemo() {
         for (int i = 1; i < 10; i++) {
-            StudentEntity student = new StudentEntity();
+            ProductOrderEntity productOrder = new ProductOrderEntity();
 
-            student.setUserId(i);
-            student.setName("Andrew_" + i);
-            student.setAge(i);
-            student.setSex(false);
+            productOrder.setTradeNo(System.currentTimeMillis() + "");
+            productOrder.setState("new");
+            productOrder.setPayAmount(new BigDecimal(23));
+            productOrder.setCreateAt(new Date());
+            productOrder.setUserId(Convert.toLong(i));
 
-            studentService.save(student);
+            productOrderService.save(productOrder);
         }
     }
 

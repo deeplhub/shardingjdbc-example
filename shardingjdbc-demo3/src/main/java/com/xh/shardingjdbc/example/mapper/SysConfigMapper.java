@@ -1,6 +1,6 @@
 package com.xh.shardingjdbc.example.mapper;
 
-import com.xh.shardingjdbc.example.model.StudentEntity;
+import com.xh.shardingjdbc.example.model.SysConfigEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -10,9 +10,9 @@ import org.apache.ibatis.annotations.Mapper;
  * </p>
  *
  * @author H.Yang
- * @since 2022-09-21
+ * @since 2022-09-28
  */
 @Mapper
-public interface StudentMapper extends BaseMapper<StudentEntity> {
+public interface SysConfigMapper extends BaseMapper<SysConfigEntity> {
 
 }

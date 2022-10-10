@@ -11,8 +11,8 @@ spring:
     # 是否启用sharding
     enabled: true
     datasource:
-      names: master #数据源名称，多个以逗号隔开
-      master:
+      names: ds0 #数据源名称，多个以逗号隔开
+      ds0:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
         jdbc-url: jdbc:mysql://127.0.0.1:3306/sharding?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
@@ -24,7 +24,7 @@ spring:
     sharding:
       tables:
         # 分表，逻辑表名
-        student:
+        product_order:
           # 雪花算法生成ID，配置workId
           key-generator:
             type: SNOWFLAKE
@@ -33,11 +33,11 @@ spring:
               worker:
                 id: 1
           # 指定product_order表的数据分布情况，配置数据节点,行表达式标识符使用 ${...} 或 $->{...}，但前者与 Spring 本身的文件占位符冲突，所以在 Spring 环境中建议使用 $->{...}
-          actual-data-nodes: master.student,master.student_$->{0..1}
+          actual-data-nodes: ds0.product_order,ds0.product_order_$->{0..1}
           table-strategy: # 配置分表策略
             inline:
               sharding-column: user_id # 分片列名称
-              algorithm-expression: student_$->{user_id % 2}
+              algorithm-expression: product_order_$->{user_id % 2}
 
 
 mybatis-plus:
