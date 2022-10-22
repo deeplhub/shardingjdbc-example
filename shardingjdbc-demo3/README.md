@@ -8,6 +8,17 @@
 
 多个数据库中存在相同的表，需要保持数据一致的情况下用到。
 
+<br><br>
+
+
+广播表配置
+
+```
+spring.shardingsphere.sharding.broadcast-tables=sys_config
+```
+
+
+<br><br>
 
 #### 注意点：
 
