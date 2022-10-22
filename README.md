@@ -6,7 +6,7 @@
 
 # 介绍
 
-ShardingJDBC 网关学习用例
+ShardingJDBC 学习用例
 
 ## 项目
 
@@ -245,11 +245,7 @@ ShardingJDBC 网关学习用例
 
 
 
-
-
 <br>
-
-
 
 
 
