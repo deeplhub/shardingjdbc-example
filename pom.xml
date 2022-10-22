@@ -14,6 +14,7 @@
         <!--<module>shardingjdbc-demo3</module>-->
         <module>shardingjdbc-demo4</module>
         <module>shardingjdbc-demo5</module>
+        <module>shardingjdbc-demo6</module>
     </modules>
 
     <properties>
