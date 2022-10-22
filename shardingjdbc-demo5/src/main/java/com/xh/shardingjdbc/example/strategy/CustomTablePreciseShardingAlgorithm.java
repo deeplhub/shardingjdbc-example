@@ -6,10 +6,12 @@ import org.apache.shardingsphere.api.sharding.standard.PreciseShardingValue;
 import java.util.Collection;
 
 /**
+ * 表精确分片算法
+ *
  * @author H.Yang
  * @date 2022/10/22
  */
-public class DatabasePreciseShardingAlgorithm implements PreciseShardingAlgorithm<Long> {
+public class CustomTablePreciseShardingAlgorithm implements PreciseShardingAlgorithm<Long> {
 
     /**
      * @param dataSourceNames 数据源集合

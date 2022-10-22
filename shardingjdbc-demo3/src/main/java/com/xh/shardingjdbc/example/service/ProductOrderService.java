@@ -1,7 +1,7 @@
 package com.xh.shardingjdbc.example.service;
 
-import com.xh.shardingjdbc.example.model.SysConfigEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.xh.shardingjdbc.example.model.ProductOrderEntity;
 
 /**
  * <p>
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author H.Yang
- * @since 2022-09-28
+ * @since 2022-10-10
  */
-public interface SysConfigService extends IService<SysConfigEntity> {
+public interface ProductOrderService extends IService<ProductOrderEntity> {
 
 }

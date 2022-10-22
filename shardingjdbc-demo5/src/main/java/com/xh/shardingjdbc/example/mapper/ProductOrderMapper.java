@@ -19,7 +19,4 @@ import java.util.Map;
 @Mapper
 public interface ProductOrderMapper extends BaseMapper<ProductOrderEntity> {
 
-    @Select("select * from product_order o inner join product_order_item oi ON oi.product_order_id=o.id")
-    List<Map<String, Object>> listAll();
-
 }

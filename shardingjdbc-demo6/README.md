@@ -1,21 +1,13 @@
 # 熟悉ShardingJDBC
 
-精准分片算法
+## 多种分片策略实战
 
-<br>
+### 复合分片算法
 
-# 指定精准分片算法(水平分库)
+**ComplexShardingStrategy**
 
-```
-spring.shardingsphere.sharding.tables.product_order.database-strategy.standard.sharding-column=user_id
-spring.shardingsphere.sharding.tables.product_order.database-strategy.standard.precise-algorithm-class-name=com.xh.shardingjdbc.example.strategy.DatabasePreciseShardingAlgorithm
-```
+- 提供对SQL语句中的=, IN和BETWEEN AND的分片操作，支持【多分片键】
+- 由于多分片键之间的关系复杂，Sharding-JDBC并未做过多的封装
+- 而是直接将分片键值组合以及分片操作符交于算法接口，全部由应用开发者实现，提供最大的灵活度
 
-<br>
 
-# 指定精准分片算法(水平分表)
-
-```
-spring.shardingsphere.sharding.tables.product_order.table-strategy.standard.sharding-column=id
-spring.shardingsphere.sharding.tables.product_order.table-strategy.standard.precise-algorithm-class-name=com.xh.shardingjdbc.example.strategy.TablePreciseShardingAlgorithm
-```

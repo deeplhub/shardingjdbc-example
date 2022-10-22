@@ -2,9 +2,7 @@ package com.xh.shardingjdbc.test;
 
 import cn.hutool.core.convert.Convert;
 import com.xh.shardingjdbc.example.model.ProductOrderEntity;
-import com.xh.shardingjdbc.example.model.SysConfigEntity;
 import com.xh.shardingjdbc.example.service.ProductOrderService;
-import com.xh.shardingjdbc.example.service.SysConfigService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +12,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -26,38 +26,15 @@ import java.util.Random;
 public class ShardingJdbcTest {
 
     @Autowired
-    private SysConfigService sysConfigService;
-
-    @Autowired
     private ProductOrderService productOrderService;
 
+    /**
+     * 绑定表
+     */
     @Test
-    public void shardingDemo() {
-        Random random = new Random();
-        for (int i = 1; i < 10; i++) {
-            ProductOrderEntity productOrder = new ProductOrderEntity();
-
-            productOrder.setTradeNo(System.currentTimeMillis() + "");
-            productOrder.setState("new");
-            productOrder.setPayAmount(new BigDecimal(23));
-            productOrder.setCreateAt(new Date());
-//            productOrder.setUserId(Convert.toLong(i));
-            productOrder.setUserId(Convert.toLong(random.nextInt(50)));
-
-            productOrderService.save(productOrder);
-        }
-    }
-
-    @Test
-    public void sysConfigTest() {
-        SysConfigEntity config = new SysConfigEntity();
-
-        config.setKey("name");
-        config.setValue("andrew");
-        config.setType("ad");
-
-        sysConfigService.save(config);
-
+    public void listAll() {
+        List<Map<String, Object>> list = productOrderService.listAll();
+        System.out.println();
     }
 
 }

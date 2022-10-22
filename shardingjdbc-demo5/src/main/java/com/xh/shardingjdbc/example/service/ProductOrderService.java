@@ -16,6 +16,4 @@ import java.util.Map;
  */
 public interface ProductOrderService extends IService<ProductOrderEntity> {
 
-    List<Map<String, Object>> listAll();
-
 }

@@ -1,7 +1,7 @@
 package com.xh.shardingjdbc.example.mapper;
 
-import com.xh.shardingjdbc.example.model.SysConfigEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.xh.shardingjdbc.example.model.ProductOrderEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -10,9 +10,9 @@ import org.apache.ibatis.annotations.Mapper;
  * </p>
  *
  * @author H.Yang
- * @since 2022-09-28
+ * @since 2022-10-10
  */
 @Mapper
-public interface SysConfigMapper extends BaseMapper<SysConfigEntity> {
+public interface ProductOrderMapper extends BaseMapper<ProductOrderEntity> {
 
 }

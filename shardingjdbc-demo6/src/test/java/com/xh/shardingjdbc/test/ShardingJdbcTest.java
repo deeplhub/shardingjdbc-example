@@ -1,6 +1,7 @@
 package com.xh.shardingjdbc.test;
 
 import cn.hutool.core.convert.Convert;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.xh.shardingjdbc.example.model.ProductOrderEntity;
 import com.xh.shardingjdbc.example.service.ProductOrderService;
 import lombok.extern.slf4j.Slf4j;
@@ -29,7 +30,9 @@ public class ShardingJdbcTest {
     @Autowired
     private ProductOrderService productOrderService;
 
-
+    /**
+     * 分库分表
+     */
     @Test
     public void save() {
         Random random = new Random();
@@ -47,5 +50,20 @@ public class ShardingJdbcTest {
         }
     }
 
+
+    /**
+     * 复合分片算法
+     */
+    @Test
+    public void complex() {
+        QueryWrapper<ProductOrderEntity> queryWrapper = new QueryWrapper();
+
+//        queryWrapper.lambda().eq(ProductOrderEntity::getId, 1583637680040235011L);
+//        queryWrapper.lambda().eq(ProductOrderEntity::getUserId, 46);
+        queryWrapper.eq("id", 1583637680040235011L);
+        queryWrapper.eq("user_id", 46L);
+
+        productOrderService.list(queryWrapper);
+    }
 
 }

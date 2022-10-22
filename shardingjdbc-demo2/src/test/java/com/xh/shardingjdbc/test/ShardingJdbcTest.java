@@ -1,6 +1,7 @@
 package com.xh.shardingjdbc.test;
 
 import cn.hutool.core.convert.Convert;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.xh.shardingjdbc.example.model.ProductOrderEntity;
 import com.xh.shardingjdbc.example.service.ProductOrderService;
 import lombok.extern.slf4j.Slf4j;
@@ -25,8 +26,11 @@ public class ShardingJdbcTest {
     @Autowired
     private ProductOrderService productOrderService;
 
+    /**
+     * 分表
+     */
     @Test
-    public void shardingDemo() {
+    public void save() {
         for (int i = 1; i < 10; i++) {
             ProductOrderEntity productOrder = new ProductOrderEntity();
 

@@ -1,10 +1,9 @@
 package com.xh.shardingjdbc.test;
 
 import cn.hutool.core.convert.Convert;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.xh.shardingjdbc.example.model.ProductOrderEntity;
-import com.xh.shardingjdbc.example.model.SysConfigEntity;
 import com.xh.shardingjdbc.example.service.ProductOrderService;
-import com.xh.shardingjdbc.example.service.SysConfigService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,18 +26,13 @@ import java.util.Random;
 @SpringBootTest
 public class ShardingJdbcTest {
 
-    @Autowired
-    private SysConfigService sysConfigService;
 
     @Autowired
     private ProductOrderService productOrderService;
 
-    @Test
-    public void listAll() {
-        List<Map<String, Object>> list = productOrderService.listAll();
-        System.out.println();
-    }
-
+    /**
+     * 分库分表
+     */
     @Test
     public void save() {
         Random random = new Random();
@@ -56,16 +50,17 @@ public class ShardingJdbcTest {
         }
     }
 
+
+    /**
+     * 范围分片算法
+     */
     @Test
-    public void sysConfigTest() {
-        SysConfigEntity config = new SysConfigEntity();
+    public void between() {
+        QueryWrapper<ProductOrderEntity> queryWrapper = new QueryWrapper();
 
-        config.setKey("name");
-        config.setValue("andrew");
-        config.setType("ad");
+        queryWrapper.lambda().between(ProductOrderEntity::getId, 1583637680040235009L, 1583637680040235011L);
 
-        sysConfigService.save(config);
-
+        productOrderService.list(queryWrapper);
     }
 
 }

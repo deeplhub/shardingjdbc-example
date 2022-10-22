@@ -6,9 +6,12 @@ import com.xh.shardingjdbc.example.model.ProductOrderEntity;
 import com.xh.shardingjdbc.example.service.ProductOrderService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author H.Yang
@@ -17,4 +20,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProductOrderServiceImpl extends ServiceImpl<ProductOrderMapper, ProductOrderEntity> implements ProductOrderService {
 
+    @Override
+    public List<Map<String, Object>> listAll() {
+        return super.baseMapper.listAll();
+    }
 }
