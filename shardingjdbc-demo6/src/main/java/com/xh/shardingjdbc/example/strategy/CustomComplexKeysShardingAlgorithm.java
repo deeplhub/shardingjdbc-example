@@ -32,7 +32,7 @@ public class CustomComplexKeysShardingAlgorithm implements ComplexKeysShardingAl
         Collection<Long> userIdValues = this.getShardingValue(complexKeysShardingValue, "user_id");
 
         List<String> shardingSuffix = new ArrayList<>();
-        // 对两个分片健取模的方式
+        // 对两个分片健取模的方式 product_order_0_0、product_order_0_1、product_order_1_0、product_order_1_1
         for (Long userId : userIdValues) {
             for (Long orderId : orderIdValues) {
                 // FIXME：这里规则找不到表，会抛出异常：Cause: java.lang.IllegalStateException: no table route info
