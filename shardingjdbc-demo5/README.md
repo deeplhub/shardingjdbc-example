@@ -2,7 +2,7 @@
 
 ## 多种分片策略实战
 
-### 精准分片算法
+### 1. 精准分片算法
 
 **StandardShardingStrategy**
 
@@ -31,7 +31,7 @@ spring.shardingsphere.sharding.tables.product_order.table-strategy.standard.prec
 
 <br><br>
 
-### 范围分片算法
+### 2. 范围分片算法
 
 **RangeShardingAlgorithm**
 
@@ -46,26 +46,6 @@ spring.shardingsphere.sharding.tables.product_order.table-strategy.standard.prec
 spring.shardingsphere.sharding.tables.product_order.table-strategy.standard.range-algorithm-class-name=com.xh.shardingjdbc.example.strategy.CustomRangePreciseShardingAlgorithm
 ```
 
-### 复合分片算法(用的不多，了解就好)
+### 3. 复合分片算法(用的不多，了解就好)
 
-**ComplexShardingStrategy**
-
-- 提供对SQL语句中的=, IN和BETWEEN AND的分片操作，支持【多分片键】
-- 由于多分片键之间的关系复杂，Sharding-JDBC并未做过多的封装
-- 而是直接将分片键值组合以及分片操作符交于算法接口，全部由应用开发者实现，提供最大的灵活度
-
-<br>
-
-> 复合分片算法示例参考 demo6
-
-<br>
-
-### Hint分片算法
-
-**HintShardingStrategy**
-
-- hint的中文意思：提示、暗示
-- 这种分片策略无需配置文件进行配置分片健，分片健值也不再从 SQL中解析，外部手动指定分片健或分片库，让 SQL在指定的分库、分表中执行
-- 通过Hint代码指定的方式而非SQL解析的方式分片的策略
-- Hint策略会绕过SQL解析的，对于这些比较复杂的需要分片的查询，Hint分片策略性能可能会更好
-- 可以指定sql去某个库某个表进行执行
+### 4. Hint分片算法
